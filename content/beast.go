@@ -284,7 +284,7 @@ var harmfulDischargesTable = roll.Table{
 		{Match: []int{5}, Text: "Natural laser or plasma discharge"},
 		{Match: []int{6}, Text: "Nauseating stench or disabling chemical"},
 		{Match: []int{7}, Text: "Equipment-melting corrosive"},
-		{Match: []int{8}, Text: "Explosive pellets or chemical catalysts"},
+		{Match: []int{8}, Text: "Explosive pellets/spikes or chemical catalysts"},
 	},
 }
 
