@@ -27,11 +27,12 @@ const (
 	Nigerian Culture = "Nigerian"
 	Russian  Culture = "Russian"
 	Spanish  Culture = "Spanish"
+    Gang     Culture = "Gang"
 	Any      Culture = "Any"
 )
 
 // Cultures list
-var Cultures = []Culture{Arabic, Chinese, English, Greek, Indian, Japanese, Latin, Nigerian, Russian, Spanish}
+var Cultures = []Culture{Arabic, Chinese, English, Greek, Indian, Japanese, Latin, Nigerian, Russian, Spanish, Gang}
 
 // Random returns a cultures' identifier and string name at random
 func Random() Culture {

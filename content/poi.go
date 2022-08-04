@@ -186,6 +186,7 @@ var poiTable = table.ThreePart{
 					"Scientists studying the alien life",
 					"Scrappers in the ruined old mine",
 					"Impoverished separatist group",
+					"Well funded separatist group",
 				},
 			},
 			SubTable2: roll.List{
@@ -215,6 +216,27 @@ var poiTable = table.ThreePart{
 					"Pirates have taken over",
 					"Has corrupt customs agents",
 					"Foreign saboteurs are active",
+					"Deep-space alien signal",
+				},
+			},
+		},
+		{
+			Name: "Secret Gang Hideout",
+			SubTable1: roll.List{
+				Items: []string{
+					"Half-crazed hermit caretaker",
+					"Casino",
+					"Holding station for contraband",
+					"Gang Safehouse/Cache",
+					"Gang Pleasure Spot",
+				},
+			},
+			SubTable2: roll.List{
+				Items: []string{
+					"A ship is in severe distress",
+					"Gang leader is marooned (may also have henchmen)",
+					"Outbreak of plague amongst prisoners/gang members",
+					"Pressured by another gang",
 					"Deep-space alien signal",
 				},
 			},
