@@ -39,6 +39,11 @@ func New(exportType, name string, data *sector.Stars) (Exporter, error) {
 			Name:  name,
 			Stars: data,
 		}, nil
+    case "doku":
+        return &Doku{
+            Name: name,
+            Stars: data,
+        }, nil
 	}
 
 	return nil, fmt.Errorf("no Exporter found for [%s], available options are [%s]", exportType, []string{"hugo", "txt", "json"})

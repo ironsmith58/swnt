@@ -49,12 +49,12 @@ type cell struct {
 
 /* A cell:
 `  \__________/
-  /r         \
- /            \
-/              \
-\              /
- \            /
-	\__________/  `,
+   /r         \
+  /            \
+ /              \
+ \              /
+  \            /
+   \__________/  `,
 */
 
 func newCell(row, col int) *cell {

@@ -39,5 +39,5 @@ var newCmd = &cobra.Command{
 
 func init() {
 	RootCmd.AddCommand(newCmd)
-	newCmd.PersistentFlags().StringP(flFormat, "f", "txt", "Set output format. (--format txt,md). Not all commands support this flag.")
+	newCmd.PersistentFlags().StringP(flFormat, "f", "txt", "Set output format. (--format txt,md,doku). Not all commands support this flag.")
 }

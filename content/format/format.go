@@ -14,10 +14,11 @@ type OutputType string
 const (
 	TEXT     OutputType = "txt"
 	MARKDOWN OutputType = "md"
+    DOKUWIKI OutputType = "doku" // Dokuwiki MarkUp subset
 )
 
 // Types of format output currently supported
-var Types = []OutputType{TEXT, MARKDOWN}
+var Types = []OutputType{TEXT, MARKDOWN, DOKUWIKI}
 
 func (o OutputType) String() string {
 	return string(o)
@@ -45,6 +46,10 @@ func Header(t OutputType, size int, text string) string {
 
 	case MARKDOWN:
 		out = fmt.Sprintf("%s %s\n\n", strings.Repeat("#", size), text)
+
+    case DOKUWIKI:
+        hdr := strings.Repeat("=", size)
+        out = fmt.Sprintf("%s %s %s\n\n", hdr, text, hdr)
 	}
 
 	return out
@@ -67,14 +72,23 @@ func Table(t OutputType, headers []string, rows [][]string) string {
 		if len(headers) > 0 {
 			fmt.Fprintf(buf, "%s\n", strings.Join(headers, sep))
 		}
+
 	case MARKDOWN:
 		sep, rowTmpl = " | ", "| %s |\n"
 
 		if len(headers) > 0 {
 			cells := make([]string, len(rows[0]))
 			fmt.Fprintf(buf, "| %s |\n| %s --- |\n", strings.Join(headers, " | "), strings.Join(cells, " --- |"))
+        }
+
+	case DOKUWIKI:
+		sep, rowTmpl = " | ", "| %s |\n"
+
+		if len(headers) > 0 {
+			//cells := make([]string, len(rows[0]))
+			fmt.Fprintf(buf, "^ %s ^\n", strings.Join(headers, " ^ "))
 		}
-	}
+    }
 
 	for _, row := range rows {
 		fmt.Fprintf(buf, rowTmpl, strings.Join(row, sep))

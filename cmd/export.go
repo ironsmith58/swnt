@@ -34,7 +34,7 @@ import (
 // exportCmd represents the export command
 var exportCmd = &cobra.Command{
 	Use:   "export",
-	Short: "Export a json dump to hugo or text",
+	Short: "Export a json dump to hugo, text or doku(dokuwiki)",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		jsonFile, _ := cmd.Flags().GetString(flFile)
@@ -65,5 +65,5 @@ var exportCmd = &cobra.Command{
 func init() {
 	RootCmd.AddCommand(exportCmd)
 	exportCmd.Flags().StringP(flFile, "i", "", "Path to json file")
-	exportCmd.Flags().StringP(flExport, "x", "hugo,txt", "Set export format")
+	exportCmd.Flags().StringP(flExport, "x", "hugo,txt,doku", "Set export format")
 }

@@ -58,5 +58,5 @@ func init() {
 	RootCmd.AddCommand(bestiaryCmd)
 
 	bestiaryCmd.Flags().StringArrayP(flFilter, "l", []string{}, "Filter by name. I.e -l \"human\" -l \"pirate\"")
-	bestiaryCmd.Flags().StringP(flFormat, "f", "txt", "Set output format. (--format txt,md). Not all commands support this flag.")
+	bestiaryCmd.Flags().StringP(flFormat, "f", "txt", "Set output format. (--format txt,md,doku). Not all commands support this flag.")
 }
