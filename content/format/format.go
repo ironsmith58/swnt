@@ -48,6 +48,10 @@ func Header(t OutputType, size int, text string) string {
 		out = fmt.Sprintf("%s %s\n\n", strings.Repeat("#", size), text)
 
     case DOKUWIKI:
+        size = 7 - size
+        if size <= 0{
+            size = 1
+        }
         hdr := strings.Repeat("=", size)
         out = fmt.Sprintf("%s %s %s\n\n", hdr, text, hdr)
 	}

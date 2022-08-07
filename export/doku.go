@@ -32,54 +32,11 @@ func (d *Doku) Write() error {
         return err
     }
 
-    //fmt.Println("Creating new doku site...")
-    //o, err := exec.Command("doku", "new", "site", ".").CombinedOutput()
-    //if err != nil {
-    //  return err
-    //}
-    //fmt.Print(string(o))
-
     o, err := exec.Command("git", "init").CombinedOutput()
     if err != nil {
         return err
     }
     fmt.Print(string(o))
-
-    //o, err = exec.Command("git", "submodule", "add", "https://github.com/nboughton/doku-theme-docdock.git", "themes/docdock").CombinedOutput()
-    //if err != nil {
-    //    return err
-    //}
-    //fmt.Print(string(o))
-
-    //o, err = exec.Command("git", "submodule", "init").CombinedOutput()
-    //if err != nil {
-    //    return err
-    //}
-    //fmt.Print(string(o))
-
-    //o, err = exec.Command("git", "submodule", "update").CombinedOutput()
-    //if err != nil {
-    //    return err
-    //}
-    //fmt.Print(string(o))
-
-    //fmt.Println("Copying config...")
-    //_, err = exec.Command("cp", "themes/docdock/exampleSite/config.toml", ".").CombinedOutput()
-    //if err != nil {
-    //    return err
-    //}
-
-    //fmt.Println("Setting Title...")
-    //_, err = exec.Command("sed", "-i", fmt.Sprintf("s/TITLE/%s/", h.Name), "config.toml").CombinedOutput()
-    //if err != nil {
-    //    return err
-    //}
-
-    //fmt.Println("Copying in default archetype...")
-    //_, err = exec.Command("cp", "themes/docdock/archetypes/default.md", "archetypes/").CombinedOutput()
-    //if err != nil {
-    //    return err
-    //}
 
     fmt.Println("Creating Stars dir...")
     //Create directory name by lowercasing the sector name
@@ -108,6 +65,12 @@ func (d *Doku) Write() error {
         //Save star names so we can create an index
         starNames = append(starNames, star.Name)
 
+        if _, err := f.Write([]byte("===== "+star.Name+" =====\n\n")); err != nil {
+            return err
+        }
+        if _, err := f.Write([]byte("==== Description ====\n\n")); err != nil {
+            return err
+        }
         if _, err := f.Write([]byte(star.Format(format.DOKUWIKI))); err != nil {
             return err
         }
@@ -152,7 +115,9 @@ func (d *Doku) Write() error {
         return err
     }
 
-    if _, err := f.Write([]byte("# " + d.Name + "\n\n<code>\n" + Hexmap(d.Stars, false, false) + "\n</code>")); err != nil {
+    line := "=====" + d.Name + "=====\n\n<code>\n" + Hexmap(d.Stars, false, false) + "\n</code>"
+    _, err = f.WriteString(line)
+    if err != nil {
         return err
     }
     f.Close()
