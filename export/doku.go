@@ -152,7 +152,7 @@ func (d *Doku) Write() error {
         return err
     }
 
-    if _, err := f.Write([]byte("# " + d.Name + "\n\n```\n" + Hexmap(d.Stars, false, false) + "\n```")); err != nil {
+    if _, err := f.Write([]byte("# " + d.Name + "\n\n<code>\n" + Hexmap(d.Stars, false, false) + "\n</code>")); err != nil {
         return err
     }
     f.Close()

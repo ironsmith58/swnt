@@ -28,33 +28,33 @@ import (
 )
 
 const (
-	flExclude   = "exclude"
-	flFormat    = "format"
-	flColour    = "colour"
-	flPoi       = "poi-chance"
-	flOW        = "other-worlds-chance"
-	flSecHeight = "sector-height"
-	flSecWidth  = "sector-width"
-	flExport    = "export"
-	flDensity   = "density"
+	flExclude    = "exclude"
+	flFormat     = "format"
+	flColour     = "colour"
+	flPoi        = "poi-chance"
+	flOW         = "other-worlds-chance"
+	flSecHeight  = "sector-height"
+	flSecWidth   = "sector-width"
+	flExport     = "export"
+	flDensity    = "density"
 
-	flFile = "file"
+	flFile       = "file"
 
 	flWilderness = "wilderness"
 
-	flCulture = "culture"
-	flGender  = "gender"
-	flPatron  = "is-patron"
+	flCulture    = "culture"
+	flGender     = "gender"
+	flPatron     = "is-patron"
 
-	flDescOnly = "desc-only"
-	flTag      = "tag"
-	flTags     = "tags"
-	flLongTags = "long-tags"
+	flDescOnly   = "desc-only"
+	flTag        = "tag"
+	flTags       = "tags"
+	flLongTags   = "long-tags"
 
-	flList   = "list"
-	flName   = "name"
-	flFilter = "filter"
-	flAll    = "all"
+	flList       = "list"
+	flName       = "name"
+	flFilter     = "filter"
+	flAll        = "all"
 )
 
 // RootCmd represents the base command when called without any subcommands
