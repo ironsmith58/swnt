@@ -65,10 +65,10 @@ func (d *Doku) Write() error {
         //Save star names so we can create an index
         starNames = append(starNames, star.Name)
 
-        if _, err := f.Write([]byte("===== "+star.Name+" =====\n\n")); err != nil {
+        if _, err := f.Write([]byte("==== "+star.Name+" ====\n\n")); err != nil {
             return err
         }
-        if _, err := f.Write([]byte("==== Description ====\n\n")); err != nil {
+        if _, err := f.Write([]byte("=== Description ===\n\n")); err != nil {
             return err
         }
         if _, err := f.Write([]byte(star.Format(format.DOKUWIKI))); err != nil {
@@ -88,11 +88,11 @@ func (d *Doku) Write() error {
     //Write header
 
     headers := [...]string{
-        fmt.Sprintf("====== %s ======\n", d.Name),
+        fmt.Sprintf("==== %s ====\n", d.Name),
         "\n",
-        fmt.Sprintf("===== Description =====\n"),
+        fmt.Sprintf("=== Description ===\n"),
         "\n",
-        fmt.Sprintf("===== Stars =====\n"),
+        fmt.Sprintf("=== Stars ===\n"),
         "\n",
     }
     for _, h := range headers {
