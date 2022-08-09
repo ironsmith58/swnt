@@ -52,6 +52,9 @@ func (d *Doku) Write() error {
     //Create array to hold 
     var starNames []string
 
+    //Create formatted line
+    var line string
+
     fmt.Println("Populating Stars dir...")
     for _, star := range d.Stars.Systems {
         // Create article stub
@@ -65,10 +68,12 @@ func (d *Doku) Write() error {
         //Save star names so we can create an index
         starNames = append(starNames, star.Name)
 
-        if _, err := f.Write([]byte("==== "+star.Name+" ====\n\n")); err != nil {
+        line = format.Header(format.DOKUWIKI, 1, star.Name)
+        if _, err := f.Write([]byte(line)); err != nil {
             return err
         }
-        if _, err := f.Write([]byte("=== Description ===\n\n")); err != nil {
+        line = format.Header(format.DOKUWIKI, 2, "Description")
+        if _, err := f.Write([]byte(line)); err != nil {
             return err
         }
         if _, err := f.Write([]byte(star.Format(format.DOKUWIKI))); err != nil {
@@ -85,14 +90,18 @@ func (d *Doku) Write() error {
     if err != nil {
         return err
     }
-    //Write header
 
+        line = format.Header(format.DOKUWIKI, 2, "Description")
+    //Write header
     headers := [...]string{
-        fmt.Sprintf("==== %s ====\n", d.Name),
+        format.Header(format.DOKUWIKI, 3, d.Name),
         "\n",
-        fmt.Sprintf("=== Description ===\n"),
+        format.Header(format.DOKUWIKI, 4, "Description"),
         "\n",
-        fmt.Sprintf("=== Stars ===\n"),
+        format.Header(format.DOKUWIKI, 4, "Sector Map"),
+        fmt.Sprintf("[[map|Star Map]]\n"),
+        "\n",
+        format.Header(format.DOKUWIKI, 4, "Stars"),
         "\n",
     }
     for _, h := range headers {
@@ -115,7 +124,7 @@ func (d *Doku) Write() error {
         return err
     }
 
-    line := "=====" + d.Name + "=====\n\n<code>\n" + Hexmap(d.Stars, false, false) + "\n</code>"
+    line = "=====" + d.Name + "=====\n\n<code>\n" + Hexmap(d.Stars, false, false) + "\n</code>"
     _, err = f.WriteString(line)
     if err != nil {
         return err
